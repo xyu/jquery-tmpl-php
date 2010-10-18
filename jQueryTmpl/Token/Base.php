@@ -17,17 +17,20 @@ abstract class jQueryTmpl_Token_Base implements jQueryTmpl_Token
 
         if (substr($string, 0, $startTagLen) !== $this->_oTag.$requiredTag)
         {
-            return false;
+            throw new jQueryTmpl_Token_Exception("Tag must start with '$this->_oTag$requiredTag'.");
         }
 
         if (substr($string, -$this->_cTagLen) !== $this->_cTag)
         {
-            return false;
+            throw new jQueryTmpl_Token_Exception("Tag must end with '$this->_cTag'.");
         }
 
         $tagBody = substr($string, $startTagLen, -$this->_cTagLen);
 
-        return (strpos($tagBody,$this->_cTag) === false);
+        if (strpos($tagBody,$this->_cTag) !== false)
+        {
+            throw new jQueryTmpl_Token_Exception("Tag can not contain multiple end tags '$this->_cTag'.");
+        }
     }
 }
 

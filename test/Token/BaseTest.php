@@ -71,6 +71,15 @@ class Test_jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
 
     public function validateIsSingleTag($string, $requiredTag)
     {
-        return $this->_validateIsSingleTag($string, $requiredTag);
+        try
+        {
+            $this->_validateIsSingleTag($string, $requiredTag);
+        }
+        catch (jQueryTmpl_Token_Exception $e)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
