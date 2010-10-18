@@ -8,7 +8,7 @@ class jQueryTmpl_Token_BaseTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_cut = new Test_jQueryTmpl_Token_Base();
+        $this->_cut = new jQueryTmpl_Token_BaseTest__jQueryTmpl_Token_Base();
     }
 
     public function testShouldValidateSingleTag()
@@ -90,7 +90,7 @@ class jQueryTmpl_Token_BaseTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class Test_jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
+class jQueryTmpl_Token_BaseTest__jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
 {
     public function parseString($str)
     {
