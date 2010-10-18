@@ -58,6 +58,22 @@ class jQueryTmpl_Token_BaseTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testShouldConsiderValidVarNameNotExpression()
+    {
+        $this->_cut->validateIsNotExpression('{{TESTsomeVarName}}', 'TEST');
+        $this->_cut->validateIsNotExpression('{{TEST someVarName }}', 'TEST');
+        $this->_cut->validateIsNotExpression('{{TEST _someVarName }}', 'TEST');
+        $this->_cut->validateIsNotExpression('{{TEST $someVarName }}', 'TEST');
+    }
+
+    /**
+     * @expectedException jQueryTmpl_Token_Exception
+     */
+    public function testShouldThrowExceptionWhenGivenExpression()
+    {
+        $this->_cut->validateIsNotExpression('{{TEST someVarName.length }}', 'TEST');
+    }
+
     public function testShouldGetTagContent()
     {
         $this->assertEquals
@@ -96,6 +112,11 @@ class Test_jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
         }
 
         return true;
+    }
+
+    public function validateIsNotExpression($string, $startTag)
+    {
+        $this->_validateIsNotExpression($string, $startTag);
     }
 
     public function getTagContent($string, $startTag)

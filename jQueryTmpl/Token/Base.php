@@ -29,6 +29,14 @@ abstract class jQueryTmpl_Token_Base implements jQueryTmpl_Token
         }
     }
 
+    protected function _validateIsNotExpression($string, $startTag)
+    {
+        if (preg_match('/^[a-z_$][0-9a-z_$]*$/i', $this->_getTagContent($string, $startTag)) == 0)
+        {
+            throw new jQueryTmpl_Token_Exception("Was not expecting an expression for tag '$string'.");
+        }
+    }
+
     protected function _getTagContent($string, $startTag)
     {
         return trim
