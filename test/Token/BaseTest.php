@@ -57,6 +57,21 @@ class jQueryTmpl_Token_BaseTest extends PHPUnit_Framework_TestCase
             $this->_cut->validateIsSingleTag('{{Pure open and close}} with second}}', '')
         );
     }
+
+    public function testShouldGetTagContent()
+    {
+        $this->assertEquals
+        (
+            'SomeTag',
+            $this->_cut->getTagContent('{{TEST SomeTag }}', 'TEST')
+        );
+
+        $this->assertEquals
+        (
+            'SomeTag',
+            $this->_cut->getTagContent('{{TESTSomeTag}}', 'TEST')
+        );
+    }
 }
 
 class Test_jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
@@ -82,4 +97,10 @@ class Test_jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
 
         return true;
     }
+
+    public function getTagContent($string, $startTag)
+    {
+        return $this->_getTagContent($string, $startTag);
+    }
 }
+
