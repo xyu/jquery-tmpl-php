@@ -11,13 +11,11 @@ abstract class jQueryTmpl_Token_Base implements jQueryTmpl_Token
      *  Validates that the string in question contains only one closing
      *  tag and opens with the required tag.
      */
-    protected function _validateIsSingleTag($string, $requiredTag)
+    protected function _validateIsSingleTag($string, $startTag)
     {
-        $startTagLen = $this->_oTagLen + strlen($requiredTag);
-
-        if (substr($string, 0, $startTagLen) !== $this->_oTag.$requiredTag)
+        if (substr($string, 0, $this->_getStartTagLen($startTag)) !== $this->_oTag.$startTag)
         {
-            throw new jQueryTmpl_Token_Exception("Tag must start with '$this->_oTag$requiredTag'.");
+            throw new jQueryTmpl_Token_Exception("Tag must start with '$this->_oTag$startTag'.");
         }
 
         if (substr($string, -$this->_cTagLen) !== $this->_cTag)
@@ -25,12 +23,28 @@ abstract class jQueryTmpl_Token_Base implements jQueryTmpl_Token
             throw new jQueryTmpl_Token_Exception("Tag must end with '$this->_cTag'.");
         }
 
-        $tagBody = substr($string, $startTagLen, -$this->_cTagLen);
-
-        if (strpos($tagBody,$this->_cTag) !== false)
+        if (strpos($this->_getTagContent($string, $startTag), $this->_cTag) !== false)
         {
             throw new jQueryTmpl_Token_Exception("Tag can not contain multiple end tags '$this->_cTag'.");
         }
+    }
+
+    protected function _getTagContent($string, $startTag)
+    {
+        return trim
+        (
+            substr
+            (
+                $string,
+                $this->_getStartTagLen($startTag),
+                -$this->_cTagLen
+            )
+        );
+    }
+
+    private function _getStartTagLen($startTag)
+    {
+        return $this->_oTagLen + strlen($startTag);
     }
 }
 
