@@ -3,51 +3,33 @@
 abstract class jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_Base
 {
     /**
-     *  Validates that the string in question contains only one closing
+     *  Validates that the tag in question contains only one closing
      *  tag and opens with the required tag.
      */
-    protected function _validateIsSingleTag($string, $startTag)
+    protected function _validateIsSingleTag()
     {
-        if (substr($string, 0, $this->_getStartTagLen($startTag)) !== $this->_oTag.$startTag)
+        if (substr($this->_getRawTmpl(), 0, $this->_getStartTagLen()) !== "{$this->_oTag}{$this->_getTag()}")
         {
-            throw new jQueryTmpl_Token_Exception("Tag must start with '$this->_oTag$startTag'.");
+            throw new jQueryTmpl_Token_Exception("Tag must start with '{$this->_oTag}{$this->_getTag()}'.");
         }
 
-        if (substr($string, -$this->_cTagLen) !== $this->_cTag)
+        if (substr($this->_getRawTmpl(), -$this->_cTagLen) !== $this->_cTag)
         {
             throw new jQueryTmpl_Token_Exception("Tag must end with '$this->_cTag'.");
         }
 
-        if (strpos($this->_getTagContent($string, $startTag), $this->_cTag) !== false)
+        if (strpos($this->_getRawTmpl(), $this->_cTag) < strlen($this->_getRawTmpl())-$this->_cTagLen)
         {
             throw new jQueryTmpl_Token_Exception("Tag can not contain multiple end tags '$this->_cTag'.");
         }
     }
 
-    protected function _validateIsNotExpression($string, $startTag)
+    protected function _validateIsNotExpression()
     {
-        if (preg_match('/^[a-z_$][0-9a-z_$]*$/i', $this->_getTagContent($string, $startTag)) == 0)
+        if (preg_match('/^[a-z_$][0-9a-z_$]*$/i', $this->_getTagOptions()) == 0)
         {
-            throw new jQueryTmpl_Token_Exception("Was not expecting an expression for tag '$string'.");
+            throw new jQueryTmpl_Token_Exception("Was not expecting an expression.");
         }
-    }
-
-    protected function _getTagContent($string, $startTag)
-    {
-        return trim
-        (
-            substr
-            (
-                $string,
-                $this->_getStartTagLen($startTag),
-                -$this->_cTagLen
-            )
-        );
-    }
-
-    private function _getStartTagLen($startTag)
-    {
-        return $this->_oTagLen + strlen($startTag);
     }
 }
 

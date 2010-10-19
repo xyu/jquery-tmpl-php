@@ -6,14 +6,17 @@
  */
 class jQueryTmpl_Token_ValueEscaped extends jQueryTmpl_Token_BaseInline
 {
+    private $_rawTmpl;
     private $_varName;
 
     public function parseString($str)
     {
-        $this->_validateIsSingleTag($str, '=');
-        $this->_validateIsNotExpression($str, '=');
+        $this->_rawTmpl = $str;
 
-        $this->_varName = $this->_getTagContent($str, '=');
+        $this->_validateIsSingleTag();
+        $this->_validateIsNotExpression();
+
+        $this->_varName = $this->_getTagOptions();
     }
 
     public function render(stdClass $data)
@@ -28,6 +31,16 @@ class jQueryTmpl_Token_ValueEscaped extends jQueryTmpl_Token_BaseInline
         {
             return htmlspecialchars($data->$var, ENT_COMPAT, 'UTF-8');
         }
+    }
+
+    protected function _getRawTmpl()
+    {
+        return $this->_rawTmpl;
+    }
+
+    protected function _getTag()
+    {
+        return '=';
     }
 }
 

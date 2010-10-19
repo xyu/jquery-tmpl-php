@@ -13,57 +13,83 @@ class jQueryTmpl_Token_BaseInlineTest extends PHPUnit_Framework_TestCase
 
     public function testShouldValidateSingleTag()
     {
+        $this->_cut->rawTmpl = '{{TEST Some tag options}}';
         $this->assertTrue
         (
-            $this->_cut->validateIsSingleTag('{{Pure open and close}}', '')
+            $this->_cut->validateIsSingleTag()
         );
 
+        $this->_cut->rawTmpl = '{{TESTSome tag options}}';
         $this->assertTrue
         (
-            $this->_cut->validateIsSingleTag('{{WITH Tag}}', 'WITH')
+            $this->_cut->validateIsSingleTag()
         );
     }
 
-    public function testShouldNotValidateWithNoStartTag()
+    public function testShouldNotValidateWithInvalidStartTag()
     {
+        $this->_cut->rawTmpl = '{TEST Some tag options}}';
         $this->assertFalse
         (
-            $this->_cut->validateIsSingleTag('{Pure open and close}}', '')
+            $this->_cut->validateIsSingleTag()
         );
 
+        $this->_cut->rawTmpl = '{{Some tag options}}';
         $this->assertFalse
         (
-            $this->_cut->validateIsSingleTag('{WITH Tag}}', 'WITH')
-        );
-
-        $this->assertFalse
-        (
-            $this->_cut->validateIsSingleTag('{{Tag}}', 'WITH')
+            $this->_cut->validateIsSingleTag()
         );
     }
 
     public function testShouldNotValidateWithNoEndTag()
     {
+        $this->_cut->rawTmpl = '{{TEST Some tag options}';
         $this->assertFalse
         (
-            $this->_cut->validateIsSingleTag('{{Pure open and close}', '')
+            $this->_cut->validateIsSingleTag()
         );
     }
 
     public function testShouldNotValidateWithMultipleEndTags()
     {
+        $this->_cut->rawTmpl = '{{TEST Some tag options }} with 2 end tags}}';
         $this->assertFalse
         (
-            $this->_cut->validateIsSingleTag('{{Pure open and close}} with second}}', '')
+            $this->_cut->validateIsSingleTag()
+        );
+
+        $this->_cut->rawTmpl = '{{TEST Some tag options }}}}';
+        $this->assertFalse
+        (
+            $this->_cut->validateIsSingleTag()
+        );
+
+        $this->_cut->rawTmpl = '{{TEST Some tag options }}}';
+        $this->assertFalse
+        (
+            $this->_cut->validateIsSingleTag()
+        );
+
+        $this->_cut->rawTmpl = '{{TEST Some tag options }}';
+        $this->assertTrue
+        (
+            $this->_cut->validateIsSingleTag()
         );
     }
 
     public function testShouldConsiderValidVarNameNotExpression()
     {
-        $this->_cut->validateIsNotExpression('{{TESTsomeVarName}}', 'TEST');
-        $this->_cut->validateIsNotExpression('{{TEST someVarName }}', 'TEST');
-        $this->_cut->validateIsNotExpression('{{TEST _someVarName }}', 'TEST');
-        $this->_cut->validateIsNotExpression('{{TEST $someVarName }}', 'TEST');
+        $this->_cut->rawTmpl = '{{TESTsomeVarName}}';
+        $this->_cut->validateIsNotExpression();
+
+        $this->_cut->rawTmpl = '{{TEST someVarName }}';
+        $this->_cut->validateIsNotExpression();
+
+        $this->_cut->rawTmpl = '{{TEST _someVarName }}';
+        $this->_cut->validateIsNotExpression();
+
+        $this->_cut->rawTmpl = '{{TEST $someVarName }}';
+        $this->_cut->validateIsNotExpression();
     }
 
     /**
@@ -71,27 +97,32 @@ class jQueryTmpl_Token_BaseInlineTest extends PHPUnit_Framework_TestCase
      */
     public function testShouldThrowExceptionWhenGivenExpression()
     {
-        $this->_cut->validateIsNotExpression('{{TEST someVarName.length }}', 'TEST');
+        $this->_cut->rawTmpl = '{{TEST someVarName.length }}';
+        $this->_cut->validateIsNotExpression();
     }
 
-    public function testShouldGetTagContent()
+    public function testShouldGetTagOptions()
     {
+        $this->_cut->rawTmpl = '{{TEST SomeTag }}';
         $this->assertEquals
         (
             'SomeTag',
-            $this->_cut->getTagContent('{{TEST SomeTag }}', 'TEST')
+            $this->_cut->getTagOptions()
         );
 
+        $this->_cut->rawTmpl = '{{TESTSomeTag}}';
         $this->assertEquals
         (
             'SomeTag',
-            $this->_cut->getTagContent('{{TESTSomeTag}}', 'TEST')
+            $this->_cut->getTagOptions()
         );
     }
 }
 
 class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_BaseInline
 {
+    public $rawTmpl;
+
     public function parseString($str)
     {
     }
@@ -100,11 +131,11 @@ class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQuer
     {
     }
 
-    public function validateIsSingleTag($string, $requiredTag)
+    public function validateIsSingleTag()
     {
         try
         {
-            $this->_validateIsSingleTag($string, $requiredTag);
+            $this->_validateIsSingleTag();
         }
         catch (jQueryTmpl_Token_Exception $e)
         {
@@ -114,14 +145,24 @@ class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQuer
         return true;
     }
 
-    public function validateIsNotExpression($string, $startTag)
+    public function validateIsNotExpression()
     {
-        $this->_validateIsNotExpression($string, $startTag);
+        $this->_validateIsNotExpression();
     }
 
-    public function getTagContent($string, $startTag)
+    public function getTagOptions()
     {
-        return $this->_getTagContent($string, $startTag);
+        return $this->_getTagOptions();
+    }
+
+    protected function _getRawTmpl()
+    {
+        return $this->rawTmpl;
+    }
+
+    protected function _getTag()
+    {
+        return 'TEST';
     }
 }
 
