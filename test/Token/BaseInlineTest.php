@@ -100,23 +100,6 @@ class jQueryTmpl_Token_BaseInlineTest extends PHPUnit_Framework_TestCase
         $this->_cut->rawTmpl = '{{TEST someVarName.length }}';
         $this->_cut->validateIsNotExpression();
     }
-
-    public function testShouldGetTagOptions()
-    {
-        $this->_cut->rawTmpl = '{{TEST SomeTag }}';
-        $this->assertEquals
-        (
-            'SomeTag',
-            $this->_cut->getTagOptions()
-        );
-
-        $this->_cut->rawTmpl = '{{TESTSomeTag}}';
-        $this->assertEquals
-        (
-            'SomeTag',
-            $this->_cut->getTagOptions()
-        );
-    }
 }
 
 class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_BaseInline
@@ -148,11 +131,6 @@ class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQuer
     public function validateIsNotExpression()
     {
         $this->_validateIsNotExpression();
-    }
-
-    public function getTagOptions()
-    {
-        return $this->_getTagOptions();
     }
 
     protected function _getRawTmpl()
