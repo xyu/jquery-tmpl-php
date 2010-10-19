@@ -26,7 +26,7 @@ abstract class jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_Base
 
     protected function _validateIsNotExpression()
     {
-        if (preg_match('/^[a-z_$][0-9a-z_$]*$/i', $this->_getTagOptions()) == 0)
+        if (!$this->_isSimpleName($this->_getTagOptions()))
         {
             throw new jQueryTmpl_Token_Exception("Was not expecting an expression.");
         }

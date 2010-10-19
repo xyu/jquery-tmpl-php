@@ -27,5 +27,10 @@ abstract class jQueryTmpl_Token_Base implements jQueryTmpl_Token
 
         return trim($matches[1]);
     }
+
+    protected function _isSimpleName($name)
+    {
+        return (preg_match('/^[a-z_$][0-9a-z_$]*$/i', $this->_getTagOptions()) == 1);
+    }
 }
 
