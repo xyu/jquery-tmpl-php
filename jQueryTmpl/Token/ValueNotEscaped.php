@@ -4,7 +4,7 @@
  *  A escaped value token begins with '{{html' and ends with '}}' entire token
  *  should be replaced with value of referenced var.
  */
-class jQueryTmpl_Token_ValueNotEscaped extends jQueryTmpl_Token_Base
+class jQueryTmpl_Token_ValueNotEscaped extends jQueryTmpl_Token_BaseInline
 {
     private $_varName;
 

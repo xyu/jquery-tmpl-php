@@ -2,13 +2,13 @@
 
 require_once 'jQueryTmpl.php';
 
-class jQueryTmpl_Token_BaseTest extends PHPUnit_Framework_TestCase
+class jQueryTmpl_Token_BaseInlineTest extends PHPUnit_Framework_TestCase
 {
     private $_cut;
 
     public function setUp()
     {
-        $this->_cut = new jQueryTmpl_Token_BaseTest__jQueryTmpl_Token_Base();
+        $this->_cut = new jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline();
     }
 
     public function testShouldValidateSingleTag()
@@ -90,7 +90,7 @@ class jQueryTmpl_Token_BaseTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class jQueryTmpl_Token_BaseTest__jQueryTmpl_Token_Base extends jQueryTmpl_Token_Base
+class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_BaseInline
 {
     public function parseString($str)
     {
