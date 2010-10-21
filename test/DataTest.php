@@ -142,7 +142,7 @@ EOF;
         $this->assertEquals
         (
             'Rachel',
-            $this->_cut->getValueOf('key5[child5]["Grand Child 2"]')
+            $this->_cut->getValueOf('key5[child5]["Grand Child 1"]')
         );
     }
 
