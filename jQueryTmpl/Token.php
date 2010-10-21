@@ -6,6 +6,6 @@ interface jQueryTmpl_Token
     public function parseString($str);
 
     // Render the token with the given data.
-    public function render(stdClass $data);
+    public function render(jQueryTmpl_Data $data);
 }
 

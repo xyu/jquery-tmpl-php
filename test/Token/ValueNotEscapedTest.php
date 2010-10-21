@@ -9,15 +9,18 @@ class jQueryTmpl_Token_ValueNotEscapedTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_cut = new jQueryTmpl_Token_ValueNotEscaped();
+        $json = <<<EOF
+{
+    "key1" : "value1",
+    "key2" : "value2",
+    "htmlKey" : "<span>Some Text & marks \"'\".</span>",
+    "_fancyKey" : "value3",
+    "\$wtfKey" : "value4"
+}
+EOF;
 
-        $wtfKey = '$wtfKey';
-        $this->_data = new stdClass();
-        $this->_data->key1 = 'value1';
-        $this->_data->key2 = 'value2';
-        $this->_data->htmlKey = '<span>Some Text & marks "\'".</span>';
-        $this->_data->_fancyKey = 'value3';
-        $this->_data->$wtfKey = 'value4';
+        $this->_cut = new jQueryTmpl_Token_ValueNotEscaped();
+        $this->_data = new jQueryTmpl_Data(json_decode($json));
     }
 
     public function testShouldReturnTagReplacedWithValue()
@@ -58,7 +61,7 @@ class jQueryTmpl_Token_ValueNotEscapedTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals
         (
-            $this->_data->htmlKey,
+            "<span>Some Text & marks \"'\".</span>",
             $this->_cut->render($this->_data)
         );
     }

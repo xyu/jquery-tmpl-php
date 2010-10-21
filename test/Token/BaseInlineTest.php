@@ -110,7 +110,7 @@ class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQuer
     {
     }
 
-    public function render(stdClass $data)
+    public function render(jQueryTmpl_Data $data)
     {
     }
 

@@ -37,7 +37,7 @@ class jQueryTmpl_Token_BaseTest__jQueryTmpl_Token_Base extends jQueryTmpl_Token_
     {
     }
 
-    public function render(stdClass $data)
+    public function render(jQueryTmpl_Data $data)
     {
     }
 

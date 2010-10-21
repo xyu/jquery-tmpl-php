@@ -12,7 +12,7 @@ class jQueryTmpl_Token_NoOp implements jQueryTmpl_Token
         $this->_str = $str;
     }
 
-    public function render(stdClass $data)
+    public function render(jQueryTmpl_Data $data)
     {
         return $this->_str;
     }

@@ -19,18 +19,9 @@ class jQueryTmpl_Token_ValueNotEscaped extends jQueryTmpl_Token_BaseInline
         $this->_varName = $this->_getTagOptions();
     }
 
-    public function render(stdClass $data)
+    public function render(jQueryTmpl_Data $data)
     {
-        $var = $this->_varName;
-
-        if (empty($var))
-        {
-            return '';
-        }
-        else
-        {
-            return $data->$var;
-        }
+        return $data->getValueOf($this->_varName);
     }
 
     protected function _getRawTmpl()

@@ -15,7 +15,7 @@ class jQueryTmpl_Token_Comment extends jQueryTmpl_Token_BaseInline
         $this->_validateIsSingleTag();
     }
 
-    public function render(stdClass $data)
+    public function render(jQueryTmpl_Data $data)
     {
         return '';
     }
