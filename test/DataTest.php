@@ -157,18 +157,21 @@ EOF;
 
     public function testShouldGetLengths()
     {
+        // Array length
         $this->assertEquals
         (
             3,
             $this->_cut->getValueOf('key5.child4.length')
         );
 
+        // Object length
         $this->assertEquals
         (
             3,
             $this->_cut->getValueOf('key5.child5.length')
         );
 
+        // String length
         $this->assertEquals
         (
             5,
