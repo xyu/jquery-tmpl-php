@@ -10,6 +10,12 @@ class jQueryTmpl_Data
         $this->_data = $data;
     }
 
+    public function addDataPair($key, $value)
+    {
+        $this->_data->$key = $value;
+        return $this;
+    }
+
     public function getValueOf($jsNotation)
     {
         $dataTokens = $this->_parseJsNotation($jsNotation);

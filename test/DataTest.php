@@ -33,6 +33,25 @@ EOF;
         $this->_cut = new jQueryTmpl_Data(json_decode($testData));
     }
 
+    public function testShouldAddDataToObject()
+    {
+        $this->_cut
+            ->addDataPair('addedKey1', 'value 1')
+            ->addDataPair('addedKey2', 'value 2');
+
+        $this->assertEquals
+        (
+            'a string',
+            $this->_cut->getValueOf('key2')
+        );
+
+        $this->assertEquals
+        (
+            'value 2',
+            $this->_cut->getValueOf('addedKey2')
+        );
+    }
+
     /**
      * @expectedException jQueryTmpl_Data_Exception
      */
