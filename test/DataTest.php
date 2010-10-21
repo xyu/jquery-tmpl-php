@@ -138,6 +138,12 @@ EOF;
             'Naomi',
             $this->_cut->getValueOf('key5.child5["Grand Child 2"]')
         );
+
+        $this->assertEquals
+        (
+            'Rachel',
+            $this->_cut->getValueOf('key5[child5]["Grand Child 2"]')
+        );
     }
 
     public function testShouldGetCharInString()
