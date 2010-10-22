@@ -77,7 +77,7 @@ class jQueryTmpl_Token_EachTest extends PHPUnit_Framework_TestCase
     {
         $template = '
 {{each object}}
-    <li id="{{= $index}}">{{= $value.gender}}: {{= $value.name}} ({{= test2}})</li>
+    <li id="{{= $index}}">{{= $value.gender}}: {{= this.name}} ({{= test2}})</li>
 {{/each}}';
 
         $tokens = array
@@ -87,7 +87,7 @@ class jQueryTmpl_Token_EachTest extends PHPUnit_Framework_TestCase
             $this->_getNoOp('">'),
             $this->_getValue('{{= $value.gender}}'),
             $this->_getNoOp(': '),
-            $this->_getValue('{{= $value.name}}'),
+            $this->_getValue('{{= this.name}}'),
             $this->_getNoOp(' ('),
             $this->_getValue('{{= test2}}'),
             $this->_getNoOp(')</li>')
@@ -97,7 +97,7 @@ class jQueryTmpl_Token_EachTest extends PHPUnit_Framework_TestCase
         $tokenizer
             ->expects($this->once())
             ->method('tokenize')
-            ->with($this->equalTo('<li id="{{= $index}}">{{= $value.gender}}: {{= $value.name}} ({{= test2}})</li>'))
+            ->with($this->equalTo('<li id="{{= $index}}">{{= $value.gender}}: {{= this.name}} ({{= test2}})</li>'))
             ->will($this->returnValue($tokens));
 
         $cut = new jQueryTmpl_Token_Each($tokenizer);
