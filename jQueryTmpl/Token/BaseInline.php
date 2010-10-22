@@ -23,13 +23,5 @@ abstract class jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_Base
             throw new jQueryTmpl_Token_Exception("Tag can not contain multiple end tags '$this->_cTag'.");
         }
     }
-
-    protected function _validateIsNotExpression()
-    {
-        if (!$this->_isSimpleName($this->_getTagOptions()))
-        {
-            throw new jQueryTmpl_Token_Exception("Was not expecting an expression.");
-        }
-    }
 }
 

@@ -76,30 +76,6 @@ class jQueryTmpl_Token_BaseInlineTest extends PHPUnit_Framework_TestCase
             $this->_cut->validateIsSingleTag()
         );
     }
-
-    public function testShouldConsiderValidVarNameNotExpression()
-    {
-        $this->_cut->rawTmpl = '{{TESTsomeVarName}}';
-        $this->_cut->validateIsNotExpression();
-
-        $this->_cut->rawTmpl = '{{TEST someVarName }}';
-        $this->_cut->validateIsNotExpression();
-
-        $this->_cut->rawTmpl = '{{TEST _someVarName }}';
-        $this->_cut->validateIsNotExpression();
-
-        $this->_cut->rawTmpl = '{{TEST $someVarName }}';
-        $this->_cut->validateIsNotExpression();
-    }
-
-    /**
-     * @expectedException jQueryTmpl_Token_Exception
-     */
-    public function testShouldThrowExceptionWhenGivenExpression()
-    {
-        $this->_cut->rawTmpl = '{{TEST someVarName.length }}';
-        $this->_cut->validateIsNotExpression();
-    }
 }
 
 class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQueryTmpl_Token_BaseInline
@@ -126,11 +102,6 @@ class jQueryTmpl_Token_BaseInlineTest__jQueryTmpl_Token_BaseInline extends jQuer
         }
 
         return true;
-    }
-
-    public function validateIsNotExpression()
-    {
-        $this->_validateIsNotExpression();
     }
 
     protected function _getRawTmpl()

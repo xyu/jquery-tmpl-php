@@ -14,7 +14,6 @@ class jQueryTmpl_Token_ValueEscaped extends jQueryTmpl_Token_BaseInline
         $this->_rawTmpl = $str;
 
         $this->_validateIsSingleTag();
-        $this->_validateIsNotExpression();
 
         $this->_varName = $this->_getTagOptions();
     }
