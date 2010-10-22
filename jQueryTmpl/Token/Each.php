@@ -46,7 +46,8 @@ class jQueryTmpl_Token_Each extends jQueryTmpl_Token_BaseBlock
             // Add our magic local vars to copy of data
             $localObj
                 ->addDataPair($magicNameIndex, $index)
-                ->addDataPair($magicNameValue, $value);
+                ->addDataPair($magicNameValue, $value)
+                ->addDataPair('this', $value);
 
             // Now call each token and give them local data
             foreach ($this->_tokens as $token)
