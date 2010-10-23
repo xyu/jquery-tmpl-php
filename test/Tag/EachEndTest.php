@@ -52,7 +52,7 @@ class jQueryTmpl_Tag_EachEndTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '{{/EaCh}}',
-                        23
+                        14
                     )
                 )
             ),
