@@ -52,7 +52,7 @@ class jQueryTmpl_Tag_IfEndTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '{{/If}}',
-                        23
+                        12
                     )
                 )
             ),
