@@ -74,7 +74,7 @@ class jQueryTmpl_Tag_ValueEscapedTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '{{= myVar2 }}',
-                        23
+                        16
                     )
                 )
             ),
