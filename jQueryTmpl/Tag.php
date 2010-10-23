@@ -4,7 +4,7 @@
  *  Tags define the jQuery tmpl tags that should be parsed out and
  *  operated on.
  */
-interface jQueryTmpl_Tags
+interface jQueryTmpl_Tag
 {
     /**
      *  The regex to use in order to search for this tag, within a

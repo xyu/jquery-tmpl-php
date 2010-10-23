@@ -4,7 +4,7 @@
  *  The tokenizer produces tokens for each type of tag as well as
  *  NoOp tokens for html content.
  */
-interface jQueryTmpl_Tokens
+interface jQueryTmpl_Token
 {
     /**
      *  Each token must be constructed with information about how far
