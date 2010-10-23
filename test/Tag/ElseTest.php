@@ -74,12 +74,12 @@ class jQueryTmpl_Tag_ElseTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '{{ElSe myVar2 }}',
-                        23
+                        19
                     ),
                     array
                     (
                         '{{else}}',
-                        23
+                        40
                     )
                 )
             ),
