@@ -12,6 +12,11 @@ class jQueryTmpl_Tag_Else implements jQueryTmpl_Tag
         return '/{{else.*?}}/is';
     }
 
+    public function getNestingValue()
+    {
+        return array(-1,1);
+    }
+
     public function parseTag($rawTagString)
     {
         $matches = array();

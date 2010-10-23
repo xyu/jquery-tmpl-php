@@ -12,6 +12,11 @@ class jQueryTmpl_Tag_IfStart implements jQueryTmpl_Tag
         return '/{{if.*?}}/is';
     }
 
+    public function getNestingValue()
+    {
+        return array(0,1);
+    }
+
     public function parseTag($rawTagString)
     {
         $matches = array();

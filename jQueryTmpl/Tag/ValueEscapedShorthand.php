@@ -12,6 +12,11 @@ class jQueryTmpl_Tag_ValueEscapedShorthand implements jQueryTmpl_Tag
         return '/\${.*?}/is';
     }
 
+    public function getNestingValue()
+    {
+        return array(0,0);
+    }
+
     public function parseTag($rawTagString)
     {
         $matches = array();

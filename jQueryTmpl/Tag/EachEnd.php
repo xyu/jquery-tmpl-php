@@ -12,6 +12,11 @@ class jQueryTmpl_Tag_EachEnd implements jQueryTmpl_Tag
         return '/{{\/each}}/i';
     }
 
+    public function getNestingValue()
+    {
+        return array(-1,0);
+    }
+
     public function parseTag($rawTagString)
     {
         return array();
