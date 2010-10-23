@@ -74,7 +74,7 @@ class jQueryTmpl_Tag_IfStartTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '{{If myVar2 }}',
-                        23
+                        17
                     )
                 )
             ),
