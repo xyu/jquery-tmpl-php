@@ -74,7 +74,7 @@ class jQueryTmpl_Tag_ValueEscapedShorthandTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '${ myVar3 }',
-                        23
+                        32
                     )
                 )
             ),
