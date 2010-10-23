@@ -74,7 +74,7 @@ class jQueryTmpl_Tag_EachStartTest extends jQueryTmpl_Tag_TestCase
                     array
                     (
                         '{{EaCh myVar2 }}',
-                        23
+                        19
                     )
                 )
             ),
