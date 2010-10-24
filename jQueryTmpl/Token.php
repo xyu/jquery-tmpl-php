@@ -17,6 +17,14 @@ interface jQueryTmpl_Token
     public function __construct($level, array $options, $rawContent);
 
     /**
+     *  The element type that should be created by this token type.
+     *  Closing tags will not create elements and should return an
+     *  empty string.
+     *  @return string Internal name for element type.
+     */
+    public function getElementType();
+
+    /**
      *  Simply gets the values set in the constructor.
      *  @return integer Level of nesting.
      */
