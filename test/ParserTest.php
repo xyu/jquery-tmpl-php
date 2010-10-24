@@ -45,25 +45,25 @@ class jQueryTmpl_ParserTest extends PHPUnit_Framework_TestCase
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_NoOp',
+                    'NoOp',
                     new jQueryTmpl_Token_NoOp(0, array(), 'a')
                 ),
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_Comment',
+                    'Comment',
                     new jQueryTmpl_Token_Comment(0, array(), 'b')
                 ),
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_NoOp',
+                    'NoOp',
                     new jQueryTmpl_Token_NoOp(0, array(), 'c')
                 ),
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_ValueEscaped',
+                    'ValueEscaped',
                     new jQueryTmpl_Token_ValueEscaped(0, array(), 'd')
                 )
             ),
@@ -95,19 +95,19 @@ class jQueryTmpl_ParserTest extends PHPUnit_Framework_TestCase
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_NoOp',
+                    'NoOp',
                     new jQueryTmpl_Token_NoOp(0, array(), 'a')
                 ),
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_Comment',
+                    'Comment',
                     new jQueryTmpl_Token_Comment(0, array(), 'b')
                 ),
                 array
                 (
                     'Block',
-                    'jQueryTmpl_Token_IfStart',
+                    'If',
                     array
                     (
                         new jQueryTmpl_Token_IfStart(0, array(), 'c1'),
@@ -120,7 +120,7 @@ class jQueryTmpl_ParserTest extends PHPUnit_Framework_TestCase
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_ValueEscaped',
+                    'ValueEscaped',
                     new jQueryTmpl_Token_ValueEscaped(0, array(), 'd')
                 )
             ),
@@ -147,19 +147,19 @@ class jQueryTmpl_ParserTest extends PHPUnit_Framework_TestCase
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_NoOp',
+                    'NoOp',
                     new jQueryTmpl_Token_NoOp(1, array(), 'c2')
                 ),
                 array
                 (
                     'Control',
-                    'jQueryTmpl_Token_Else',
+                    'Else',
                     new jQueryTmpl_Token_Else(0, array(), 'c3')
                 ),
                 array
                 (
                     'Inline',
-                    'jQueryTmpl_Token_ValueEscaped',
+                    'ValueEscaped',
                     new jQueryTmpl_Token_ValueEscaped(1, array(), 'c4')
                 )
             ),

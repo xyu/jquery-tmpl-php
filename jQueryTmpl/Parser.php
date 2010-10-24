@@ -47,7 +47,7 @@ class jQueryTmpl_Parser
 
                 $elements[] = $this->_elementFactory->createBlock
                 (
-                    get_class($startToken),
+                    $startToken->getElementType(),
                     $childTokens
                 );
 
@@ -62,7 +62,7 @@ class jQueryTmpl_Parser
             {
                 $elements[] = $this->_elementFactory->createControl
                 (
-                    get_class($tokens[$i]),
+                    $tokens[$i]->getElementType(),
                     $tokens[$i]
                 );
 
@@ -77,7 +77,7 @@ class jQueryTmpl_Parser
             {
                 $elements[] = $this->_elementFactory->createInline
                 (
-                    get_class($tokens[$i]),
+                    $tokens[$i]->getElementType(),
                     $tokens[$i]
                 );
 
