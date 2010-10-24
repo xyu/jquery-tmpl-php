@@ -6,7 +6,8 @@ class jQueryTmpl_Element_Factory
     {
         $parserFactory = new jQueryTmpl_Parser_Factory();
 
-        $element = new "jQueryTmpl_Element_$type"($parserFactory->create());
+        $class = "jQueryTmpl_Element_$type";
+        $element = new $class($parserFactory->create());
         $element
             ->parseTokens($tokens);
 
@@ -15,7 +16,8 @@ class jQueryTmpl_Element_Factory
 
     public function createControl($type, jQueryTmpl_Token $token)
     {
-        $element = new "jQueryTmpl_Element_$type"();
+        $class = "jQueryTmpl_Element_$type";
+        $element = new $class();
         $element
             ->parseToken($token);
 
@@ -24,7 +26,8 @@ class jQueryTmpl_Element_Factory
 
     public function createInline($type, jQueryTmpl_Token $token)
     {
-        $element = new "jQueryTmpl_Element_$type"();
+        $class = "jQueryTmpl_Element_$type";
+        $element = new $class();
         $element
             ->parseToken($token);
 
