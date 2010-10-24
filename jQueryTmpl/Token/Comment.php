@@ -1,33 +1,10 @@
 <?php
 
-/**
- *  A comment token begins with '{{!' and ends with '}}' nothing should be
- *  rendered for this token.
- */
-class jQueryTmpl_Token_Comment extends jQueryTmpl_Token_BaseInline
+class jQueryTmpl_Token_Comment extends jQueryTmpl_Token_TypeInline
 {
-    private $_rawTmpl;
-
-    public function parseString($str)
+    public function getElementType()
     {
-        $this->_rawTmpl = $str;
-
-        $this->_validateIsSingleTag();
-    }
-
-    public function render(jQueryTmpl_Data $data)
-    {
-        return '';
-    }
-
-    protected function _getRawTmpl()
-    {
-        return $this->_rawTmpl;
-    }
-
-    protected function _getTag()
-    {
-        return '!';
+        return 'Comment';
     }
 }
 

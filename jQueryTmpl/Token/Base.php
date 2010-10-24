@@ -2,30 +2,30 @@
 
 abstract class jQueryTmpl_Token_Base implements jQueryTmpl_Token
 {
-    protected $_oTag = '{{';
-    protected $_oTagLen = 2;
-    protected $_cTag = '}}';
-    protected $_cTagLen = 2;
+    private $_level;
+    private $_options;
+    private $_rawContent;
 
-    abstract protected function _getRawTmpl();
-    abstract protected function _getTag();
-
-    protected function _getStartTagLen()
+    public function __construct($level, array $options, $rawContent)
     {
-        return $this->_oTagLen + strlen($this->_getTag());
+        $this->_level = $level;
+        $this->_options = $options;
+        $this->_rawContent = $rawContent;
     }
 
-    protected function _getTagOptions()
+    public function getLevel()
     {
-        $regex = "/^{$this->_oTag}{$this->_getTag()}(.*?){$this->_cTag}/i";
-        $matches = array();
+        return $this->_level;
+    }
 
-        if (!preg_match($regex, $this->_getRawTmpl(), $matches))
-        {
-            throw new jQueryTmpl_Token_Exception('Could not parse out tag options.');
-        }
+    public function getOptions()
+    {
+        return $this->_options;
+    }
 
-        return trim($matches[1]);
+    public function getRawContent()
+    {
+        return $this->_rawContent;
     }
 }
 
