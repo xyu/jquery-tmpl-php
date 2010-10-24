@@ -41,7 +41,7 @@ class jQueryTmpl
     {
         if ($nameOrMarkup instanceof jQueryTmpl_Markup)
         {
-            $elements = $this->_compileTemplate($markup);
+            $elements = $this->_compileTemplate($nameOrMarkup);
         }
         else
         {
