@@ -129,6 +129,14 @@ class jQueryTmpl_TokenizerTest extends PHPUnit_Framework_TestCase
             $tokens
         );
     }
+
+    /**
+     * @expectedException jQueryTmpl_Tokenizer_Exception
+     */
+    public function testShouldThrowExceptionWithNonMatchedBlocks()
+    {
+        $this->_cut->tokenize('12=34>56=78=90=');
+    }
 }
 
 function jQueryTmpl_TokenizerTest__FactoryCallback()
