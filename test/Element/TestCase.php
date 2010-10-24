@@ -27,7 +27,33 @@ abstract class jQueryTmpl_Element_TestCase extends PHPUnit_Framework_TestCase
             "Grand Child 2" : "Naomi",
             "Grand Child 3" : "Cathey"
         }
-    }
+    },
+    "array" : ["av1","av2","av3"],
+    "object" :
+    {
+        "person1" :
+        {
+            "name" : "Sophia",
+            "gender" : "F"
+        },
+        "person2" :
+        {
+            "name" : "Zack",
+            "gender" : "M"
+        },
+        "person3" :
+        {
+            "name" : "Zoe",
+            "gender" : "F"
+        },
+        "person4" :
+        {
+            "name" : "Morgan"
+        }
+    },
+    "htmlKey" : "<span>Some Text & marks \"'\".</span>",
+    "\$wtfKey" : "It works!",
+    "attn" : "!"
 }
 EOF;
 
