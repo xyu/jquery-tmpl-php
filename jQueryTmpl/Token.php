@@ -17,10 +17,21 @@ interface jQueryTmpl_Token
     public function __construct($level, array $options, $rawContent);
 
     /**
-     *  Methods below simply gets the values set in the constructor.
+     *  Simply gets the values set in the constructor.
+     *  @return integer Level of nesting.
      */
     public function getLevel();
+
+    /**
+     *  Simply gets the values set in the constructor.
+     *  @return array Hash of options.
+     */
     public function getOptions();
+
+    /**
+     *  Simply gets the values set in the constructor.
+     *  @return string Raw string extracted from template.
+     */
     public function getRawContent();
 }
 

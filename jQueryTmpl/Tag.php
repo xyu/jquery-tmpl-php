@@ -7,7 +7,7 @@
 interface jQueryTmpl_Tag
 {
     /**
-     *  The tokey type that strings matching this tag object should
+     *  The token type that strings matching this tag object should
      *  create. ${var} and {{=var}} should both be of type
      *  ValueEscaped however {{each foo}} and {{/each}} are two
      *  seperate token types as they have semantically different meanings.
