@@ -1,6 +1,6 @@
 <?php
 
-abstract class jQueryTmpl_Element_TypeBlock implements jQueryTmpl_Element
+abstract class jQueryTmpl_Element_TypeBlock extends jQueryTmpl_Element_Base
 {
     protected $_parser;
 
