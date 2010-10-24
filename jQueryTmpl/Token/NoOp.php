@@ -1,6 +1,6 @@
 <?php
 
-class jQueryTmpl_Token_NoOp extends jQueryTmpl_Token_Base
+class jQueryTmpl_Token_NoOp extends jQueryTmpl_Token_TypeInline
 {
 }
 

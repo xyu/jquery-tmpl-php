@@ -1,6 +1,15 @@
 <?php
 
-class jQueryTmpl_Token_IfStart extends jQueryTmpl_Token_Base
+class jQueryTmpl_Token_IfStart extends jQueryTmpl_Token_TypeBlock
 {
+    public function isBlockStart()
+    {
+        return true;
+    }
+
+    public function getBlockEndToken()
+    {
+        return 'IfEnd';
+    }
 }
 
