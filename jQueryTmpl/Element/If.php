@@ -45,7 +45,10 @@ class jQueryTmpl_Element_If extends jQueryTmpl_Element_TypeBlock implements jQue
 
             if ($startDisplay)
             {
-                $rendered .= $element->setData($this->_data)->render();
+                $rendered .= $element
+                    ->setData($this->_data)
+                    ->setCompiledTemplates($this->_compiledTemplates)
+                    ->render();
             }
         }
 
