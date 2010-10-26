@@ -5,6 +5,7 @@ require_once 'jQueryTmpl.php';
 class jQueryTmpl_DataTest extends PHPUnit_Framework_TestCase
 {
     private $_cut;
+    private $_cutPart;
 
     public function setUp()
     {
@@ -30,7 +31,32 @@ class jQueryTmpl_DataTest extends PHPUnit_Framework_TestCase
 }
 EOF;
 
-        $this->_cut = new jQueryTmpl_Data(json_decode($testData));
+        $testDataPart = <<<EOF
+{
+    "child1" : 543.21,
+    "child2" : "another string",
+    "child3" : false,
+    "child4" : ["item4", "item5", "item6"],
+    "child5" :
+    {
+        "Grand Child 1" : "Rachel",
+        "Grand Child 2" : "Naomi",
+        "Grand Child 3" : "Cathey"
+    }
+}
+EOF;
+
+        $this->_cut = new jQueryTmpl_Data
+        (
+            json_decode($testData),
+            new jQueryTmpl_Data_Factory()
+        );
+
+        $this->_cutPart = new jQueryTmpl_Data
+        (
+            json_decode($testDataPart),
+            new jQueryTmpl_Data_Factory()
+        );
     }
 
     public function testShouldAddDataToObject()
@@ -195,6 +221,39 @@ EOF;
         (
             5,
             $this->_cut->getValueOf('key5.child5["Grand Child 2"].length')
+        );
+    }
+
+    public function testShouldReturnFullObjectIfUnableToSlice()
+    {
+        // Property not specified
+        $this->assertEquals
+        (
+            $this->_cut,
+            $this->_cut->getDataSice('')
+        );
+
+        // Property is string
+        $this->assertEquals
+        (
+            $this->_cut,
+            $this->_cut->getDataSice('key2')
+        );
+
+        // Property is array
+        $this->assertEquals
+        (
+            $this->_cut,
+            $this->_cut->getDataSice('key4')
+        );
+    }
+
+    public function testShouldSliceOutPartOfData()
+    {
+        $this->assertEquals
+        (
+            $this->_cutPart,
+            $this->_cut->getDataSice('key5')
         );
     }
 }

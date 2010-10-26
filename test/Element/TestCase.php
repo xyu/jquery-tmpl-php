@@ -57,7 +57,11 @@ abstract class jQueryTmpl_Element_TestCase extends PHPUnit_Framework_TestCase
 }
 EOF;
 
-        $this->_data = new jQueryTmpl_Data(json_decode($testData));
+        $this->_data = new jQueryTmpl_Data
+        (
+            json_decode($testData),
+            new jQueryTmpl_Data_Factory()
+        );
 
         $this->_elementFactory = new jQueryTmpl_Element_Factory();
     }

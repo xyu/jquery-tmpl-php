@@ -3,11 +3,13 @@
 class jQueryTmpl_Data
 {
     private $_data;
+    private $_dataFactory;
 
-    public function __construct(stdClass $data)
+    public function __construct(stdClass $data, jQueryTmpl_Data_Factory $dataFactory)
     {
         // The json_decode() returned stdObject
         $this->_data = $data;
+        $this->_dataFactory = $dataFactory;
     }
 
     public function addDataPair($key, $value)
@@ -28,6 +30,25 @@ class jQueryTmpl_Data
         }
 
         return $localData;
+    }
+
+    public function getDataSice($jsNotation)
+    {
+        if (empty($jsNotation))
+        {
+            return $this;
+        }
+
+        $dataSlice = $this->getValueOf($jsNotation);
+
+        if ($dataSlice instanceof stdClass)
+        {
+            return $this->_dataFactory->createFromStdClass($dataSlice);
+        }
+        else
+        {
+            return $this;
+        }
     }
 
     private function _parseJsNotation($js)
