@@ -42,8 +42,8 @@ Supported Tags
 
 * **`{{html property}}`**
 
-  Renders the value of the property without HTML
-encoding. Otherwise identical to `${}`.
+  Renders the value of the property without HTML encoding. Otherwise identical
+  to `${}`.
 
 * **`{{each(index, value) property}}...{{/each}}`**
 
@@ -62,6 +62,13 @@ encoding. Otherwise identical to `${}`.
   Used within the `{{if}}` tag to evaluate else conditions. The property value
   is optional.
 
+* **`{{tmpl(data, options) template}}`**
+
+  This tag takes data and options as optional parameters. The tag will render a
+  existing rendered template (using the `template()` method) in place. When a
+  data property is passed in only the portion of data referenced by that
+  property is passed to the template specified.
+
 * **`{{! comments}}`**
 
   This tag does not appear to be documented on the official jQuery site
@@ -73,9 +80,8 @@ Roadmap
 
 The following is on my todo list.
 
-* Support for `{{tmpl}}`
-* Support for `{{wrap}}`
 * Support for JavaScript expresion evaluation.
+* Support for `{{wrap}}`
 
   [1]: http://github.com/awhatley/jquery-tmpl.net
   [2]: http://github.com/jquery/jquery-tmpl
