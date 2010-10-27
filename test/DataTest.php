@@ -224,7 +224,7 @@ EOF;
         );
     }
 
-    public function testShouldReturnFullObjectIfUnableToSlice()
+    public function testShouldReturnFullObjectIfNothingToSlice()
     {
         // Property not specified
         $this->assertEquals
@@ -232,18 +232,21 @@ EOF;
             $this->_cut,
             $this->_cut->getDataSice('')
         );
+    }
 
+    public function testShouldReturnNullIfSliceNotObject()
+    {
         // Property is string
         $this->assertEquals
         (
-            $this->_cut,
+            null,
             $this->_cut->getDataSice('key2')
         );
 
         // Property is array
         $this->assertEquals
         (
-            $this->_cut,
+            null,
             $this->_cut->getDataSice('key4')
         );
     }
