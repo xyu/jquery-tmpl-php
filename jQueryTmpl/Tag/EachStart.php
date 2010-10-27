@@ -22,7 +22,7 @@ class jQueryTmpl_Tag_EachStart implements jQueryTmpl_Tag
         $matches = array();
         preg_match('/^{{each(\((.*?),(.*)\)(.*)|(.*))}}$/is', $rawTagString, $matches);
 
-        if (trim($matches[3]) == '')
+        if (count($matches) == 6)
         {
             return array
             (

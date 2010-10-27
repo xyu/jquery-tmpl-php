@@ -53,7 +53,10 @@ class jQueryTmpl_Element_Each extends jQueryTmpl_Element_TypeBlock implements jQ
             // Now call each element and give them the data as well.
             foreach ($this->_elements as $element)
             {
-                $rendered .= $element->setData($localData)->render();
+                $rendered .= $element
+                    ->setData($localData)
+                    ->setCompiledTemplates($this->_compiledTemplates)
+                    ->render();
             }
         }
 

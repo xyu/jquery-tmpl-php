@@ -14,5 +14,11 @@ interface jQueryTmpl_Element
      *  @return jQueryTmpl_Element Return $this to chain.
      */
     public function setData(jQueryTmpl_Data $data);
+
+    /**
+     *  Each element can optionally take an array of rendered
+     *  templates. (Currently an array of elements.)
+     */
+    public function setCompiledTemplates(array $compiledTemplates);
 }
 

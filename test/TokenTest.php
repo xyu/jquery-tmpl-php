@@ -17,6 +17,7 @@ class jQueryTmpl_TokenTest extends PHPUnit_Framework_TestCase
         $tokens[] = new jQueryTmpl_Token_NoOp(0, array(), '');
         $tokens[] = new jQueryTmpl_Token_ValueEscaped(0, array(), '');
         $tokens[] = new jQueryTmpl_Token_ValueNotEscaped(0, array(), '');
+        $tokens[] = new jQueryTmpl_Token_Tmpl(0, array(), '');
 
         $this->assertContainsOnly
         (

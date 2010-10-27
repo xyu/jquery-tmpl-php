@@ -75,7 +75,10 @@ class jQueryTmpl
     {
         foreach ($elements as $element)
         {
-            $this->_outputBuffer .= $element->setData($data)->render();
+            $this->_outputBuffer .= $element
+                ->setData($data)
+                ->setCompiledTemplates($this->_compiledTemplates)
+                ->render();
         }
     }
 }

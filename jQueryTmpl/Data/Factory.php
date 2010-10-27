@@ -18,7 +18,11 @@ class jQueryTmpl_Data_Factory
             throw new jQueryTmpl_Data_Exception('Could not create data object from JSON string');
         }
 
-        return new jQueryTmpl_Data($obj);
+        return new jQueryTmpl_Data
+        (
+            $obj,
+            new jQueryTmpl_Data_Factory()
+        );
     }
 
     public function createFromArray(array $array)
@@ -28,7 +32,17 @@ class jQueryTmpl_Data_Factory
             json_decode
             (
                 json_encode($array)
-            )
+            ),
+            new jQueryTmpl_Data_Factory()
+        );
+    }
+
+    public function createFromStdClass(stdClass $obj)
+    {
+        return new jQueryTmpl_Data
+        (
+            $obj,
+            new jQueryTmpl_Data_Factory()
         );
     }
 }
