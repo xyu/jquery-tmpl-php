@@ -19,6 +19,8 @@ class jQueryTmpl_Tokenizer_Factory
             ->addTag(new jQueryTmpl_Tag_IfStart())
             ->addTag(new jQueryTmpl_Tag_Else())
             ->addTag(new jQueryTmpl_Tag_IfEnd())
+            // Tmpl Tag
+            ->addTag(new jQueryTmpl_Tag_Tmpl())
             // Values
             ->addTag(new jQueryTmpl_Tag_ValueEscaped())
             ->addTag(new jQueryTmpl_Tag_ValueEscapedShorthand())
