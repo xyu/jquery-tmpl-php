@@ -47,7 +47,7 @@ class jQueryTmpl_Data
         }
         else
         {
-            return $this;
+            return null;
         }
     }
 
