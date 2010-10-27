@@ -67,7 +67,8 @@ Supported Tags
   This tag takes data and options as optional parameters. The tag will render a
   existing rendered template (using the `template()` method) in place. When a
   data property is passed in only the portion of data referenced by that
-  property is passed to the template specified.
+  property is passed to the template specified. Options is currently not
+  supported.
 
 * **`{{! comments}}`**
 
