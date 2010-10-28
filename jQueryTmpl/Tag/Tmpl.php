@@ -14,7 +14,7 @@ class jQueryTmpl_Tag_Tmpl implements jQueryTmpl_Tag
 
     public function getNestingValue()
     {
-        return array(0,1);
+        return array(0,0);
     }
 
     public function parseTag($rawTagString)
