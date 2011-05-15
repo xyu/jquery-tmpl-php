@@ -10,19 +10,22 @@ $data = array
         (
             'name' => 'The Red Violin',
             'year' => '1998',
-            'director' => 'François Girard'
+            'director' => 'François Girard',
+            'imdb' => 7.7
         ),
         array
         (
             'name' => 'Eyes Wide Shut',
             'year' => '1999',
-            'director' => 'Stanley Kubrick'
+            'director' => 'Stanley Kubrick',
+            'imdb' => 7.2
         ),
         array
         (
             'name' => 'The Inheritance',
             'year' => '1976',
-            'director' => 'Mauro Bolognini'
+            'director' => 'Mauro Bolognini',
+            'imdb' => 6.7
         )
     ),
     'greeting' => array
@@ -54,6 +57,11 @@ $jQueryTmpl
     (
         'nameTemplate',
         $jQueryTmpl_Markup_Factory->createFromString('Hello {{=greeting.name}}!')
+    )
+    ->template
+    (
+        'ratingTemplate',
+        $jQueryTmpl_Markup_Factory->createFromString("I'd give it a {{=this.imdb}}")
     );
 
 // Use pre compiled templates to render
