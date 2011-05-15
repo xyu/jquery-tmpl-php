@@ -26,7 +26,9 @@ class jQueryTmpl_Tag_Tmpl implements jQueryTmpl_Tag
         {
             return array
             (
-                'template' => $this->_extractId($matches[1])
+                'template' => $this->_extractId($matches[1]),
+                'data' => null,
+                'options' => null
             );
         }
 
@@ -36,6 +38,7 @@ class jQueryTmpl_Tag_Tmpl implements jQueryTmpl_Tag
             (
                 'template' => $this->_extractId($matches[6]),
                 'data' => trim($matches[5]),
+                'options' => null
             );
         }
 

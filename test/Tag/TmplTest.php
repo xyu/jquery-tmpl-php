@@ -88,7 +88,9 @@ class jQueryTmpl_Tag_TmplTest extends jQueryTmpl_Tag_TestCase
         (
             array
             (
-                'template' => 'myTemplate'
+                'template' => 'myTemplate',
+                'data' => null,
+                'options' => null
             ),
             $this->_cut->parseTag('{{tmpl "#myTemplate"}}')
         );
@@ -101,7 +103,8 @@ class jQueryTmpl_Tag_TmplTest extends jQueryTmpl_Tag_TestCase
             array
             (
                 'template' => "some-template-name",
-                'data' => 'data'
+                'data' => 'data',
+                'options' => null
             ),
             $this->_cut->parseTag
             (
@@ -114,7 +117,8 @@ class jQueryTmpl_Tag_TmplTest extends jQueryTmpl_Tag_TestCase
             array
             (
                 'template' => "some-template-name",
-                'data' => 'myVar.foo["bar baz"]'
+                'data' => 'myVar.foo["bar baz"]',
+                'options' => null
             ),
             $this->_cut->parseTag
             (
